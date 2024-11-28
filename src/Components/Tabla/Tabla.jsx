@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
@@ -27,21 +28,13 @@ const columns = [
   },
 ];
 
-const mockData = [
-  { id: 1, nombre: "Auriculares Inalámbricos", precio: 120, categoria: "Electrónica" },
-  { id: 2, nombre: "Silla de Escritorio", precio: 300, categoria: "Muebles" },
-  { id: 3, nombre: "Cafetera Espresso", precio: 250, categoria: "Electrodomésticos" },
-  { id: 4, nombre: "Juego de Mesa - Monopoly", precio: 50, categoria: "Juguetes" },
-  { id: 5, nombre: "Libro de Programación en JavaScript", precio: 35, categoria: "Libros" },
-];
-
-export default function DataGridDemo() {
+export default function DataGridDemo({ productos }){
   const [rows, setRows] = useState([]); 
   const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      setRows(mockData);
+      setRows(productos);
       setLoading(false);
     }, 1000);
 
@@ -49,7 +42,7 @@ export default function DataGridDemo() {
   }, []);
 
   return (
-    <div className="Tabla" >
+    <div >
       <Box sx={{ height: 400, width: '100%' }}>
         <DataGrid
           rows={rows}
